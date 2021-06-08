@@ -33,4 +33,4 @@ function* fetchCountry() {
     }
 }
 
-    export const callSaga = [takeEvery(searchInputAction, fetchCountry)]
+export const callSaga = [takeEvery(searchInputAction, fetchCountry)]
