@@ -1,14 +1,14 @@
-import { searchInputAction, successCountryApi } from "../reducks/users/actions";
+import * as Actions from "../reducks/users/actions";
 import { put, call, takeEvery, select } from 'redux-saga/effects'
 import axios from "axios";
+import conf from "../conf";
 
 const WeatherConnect = (state) => {
-    const API_ENDPOINT = 'http://api.openweathermap.org/data/2.5/forecast';
     return axios
-    .get(API_ENDPOINT, {
+    .get(conf.API_ENDPOINT, {
         params: {
             q: state.requestCity,
-            APPID: state.apiKey
+            APPID: conf.API_KEY
         }
     })
     .then(res => {
@@ -16,21 +16,20 @@ const WeatherConnect = (state) => {
         return { country }
     })
     // エラーの場合描画
-    .catch(function (error) {
+    .catch(error => {
         return { error }
-    });
+    })
 }
 
 function* fetchCountry() {
     const state = yield select();
-    console.log(state)
     const { country, error } = yield call(WeatherConnect, state)
 
     if (country) {
-        yield put(successCountryApi(country))
+        yield put(Actions.successCountryApi(country))
     } else {
-        yield put(console.log(error))
+        console.log(error)
     }
 }
 
-export const callSaga = [takeEvery('SEARCH_INPUT', fetchCountry)]
+export const callSaga = [takeEvery(Actions.SEARCH_INPUT, fetchCountry)]
