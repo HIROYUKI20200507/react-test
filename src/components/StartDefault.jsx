@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button, TextField } from "@material-ui/core";
 import { searchInputAction } from "../reducks/users/actions";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 export const StartDefault = () => {
@@ -12,7 +12,7 @@ export const StartDefault = () => {
         dispatch(searchInputAction({
             requestCity: '東京'
         }));
-    },selector.apiKey)
+    },[])
 
     const resultSubmit = (event) => {
         dispatch(searchInputAction({
