@@ -7,7 +7,7 @@ const WeatherConnect = (state) => {
     return axios
     .get(conf.API_ENDPOINT, {
         params: {
-            q: state.requestCity,
+            q: state.weather.requestCity,
             APPID: conf.API_KEY
         }
     })

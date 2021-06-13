@@ -16,9 +16,8 @@ export const StartDefault = () => {
 
     const resultSubmit = (event) => {
         dispatch(searchInputAction({
-            requestCity: event.target.input.value
+            requestCity: event.input
         }));
-        event.preventDefault()
     }
 
     return (
@@ -42,9 +41,9 @@ export const StartDefault = () => {
             <p> Location: {selector.city} </p>
             {selector.response && Object.keys(selector.response).map(key => (
                 <li key={key}>
-                {selector.response[key].dt_txt}
-                    ,<img src={'http://openweathermap.org/img/w/'+selector.response[key].weather[0].icon+'.png'} />
-                    {selector.response[key].weather[0].main}
+                {selector.weather.response[key].dt_txt}
+                    ,<img src={'http://openweathermap.org/img/w/'+selector.weather.response[key].weather[0].icon+'.png'} />
+                    {selector.weather.response[key].weather[0].main}
                 </li>
             ))}
         </div>
