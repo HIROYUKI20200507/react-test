@@ -38,8 +38,8 @@ export const StartDefault = () => {
                     >Search
                 </Button>
             </form>
-            <p> Location: {selector.city} </p>
-            {selector.response && Object.keys(selector.response).map(key => (
+            <p> Location: {selector.weather.city} </p>
+            {selector.weather.response && Object.keys(selector.weather.response).map(key => (
                 <li key={key}>
                 {selector.weather.response[key].dt_txt}
                     ,<img src={'http://openweathermap.org/img/w/'+selector.weather.response[key].weather[0].icon+'.png'} />
