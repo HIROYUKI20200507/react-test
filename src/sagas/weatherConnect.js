@@ -4,7 +4,6 @@ import axios from "axios";
 import conf from "../conf";
 
 const WeatherConnect = (state) => {
-    console.log(state.weather)
     return axios
     .get(conf.API_ENDPOINT, {
         params: {

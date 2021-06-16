@@ -15,7 +15,6 @@ export const StartDefault = () => {
     },[])
 
     const resultSubmit = (event) => {
-        console.log(event.input)
         dispatch(searchInputAction({
             requestCity: event.input
         }));
