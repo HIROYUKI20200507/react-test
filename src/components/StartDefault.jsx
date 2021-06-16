@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Button, TextField } from "@material-ui/core";
 import { searchInputAction } from "../reducks/users/actions";
 import { useDispatch, useSelector } from "react-redux";
+import MyForm from "../components/MyForm";
 
 
 export const StartDefault = () => {
@@ -15,6 +15,7 @@ export const StartDefault = () => {
     },[])
 
     const resultSubmit = (event) => {
+        console.log(event.input)
         dispatch(searchInputAction({
             requestCity: event.input
         }));
@@ -23,21 +24,7 @@ export const StartDefault = () => {
     return (
         <div className="weather-list">
             <h1>お天気検索</h1>
-            <form onSubmit = {resultSubmit}>
-                <TextField
-                    id="standard-basic"
-                    label="Standard"
-                    type="text"
-                    name="input"
-                    />
-                <Button
-                    className="weather-list-button"
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    >Search
-                </Button>
-            </form>
+            <MyForm onSubmit={resultSubmit} />
             <p> Location: {selector.weather.city} </p>
             {selector.weather.response && Object.keys(selector.weather.response).map(key => (
                 <li key={key}>
