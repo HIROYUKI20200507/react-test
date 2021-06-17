@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { searchInputAction } from "../reducks/users/actions";
 import { useDispatch, useSelector } from "react-redux";
-import MyForm from "../components/MyForm";
+import WetherForm from "./wetherForm";
 
 
 export const StartDefault = () => {
@@ -23,7 +23,7 @@ export const StartDefault = () => {
     return (
         <div className="weather-list">
             <h1>お天気検索</h1>
-            <MyForm onSubmit={resultSubmit} />
+            <WetherForm onSubmit={resultSubmit} />
             <p> Location: {selector.weather.city} </p>
             {selector.weather.response && Object.keys(selector.weather.response).map(key => (
                 <li key={key}>
